@@ -1,0 +1,25 @@
+/**
+* Provides the base Widget {{capitalize}}
+*
+* @module {{name}}
+* @submodule posApp
+*/
+define([],function () {
+    'use strict';
+    /**
+    * Provides events to {{capitalize}}
+    *
+    * @class {{capitalize}}Events
+    * @constructor
+    * @module {{name}}
+    */
+    var {{capitalize}}Events = {
+        rootScope:null,
+        initialize: function($rootScope){
+            this.rootScope = $rootScope;
+        },
+        {{name}}Created: function(data){
+        }
+    }
+    return {{capitalize}}Events;
+});

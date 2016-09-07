@@ -1,0 +1,41 @@
+{
+  "name": "POS",
+  "version":"1.0.0",
+  "description": "Point of Sale",
+  "main": [],
+  "keywords": [
+    "POS","Point of Sale"
+  ],
+  "ignore": [
+    "source",
+    "spec",
+    "grunt",
+    "js",
+    "src",
+    "nuget",
+    ".bowerrc",
+    ".gitignore",
+    ".jshintignore",
+    ".jshintrc",
+    ".bower.json",
+    "bower.json",
+    "gruntfile.js",
+    "package.json",
+    "README.md",
+    "index.html",
+    "index.js",
+    "README.md",
+    ".npmignore"
+  ],
+  "authors": [
+    "REDIM"
+  ],
+  "dependencies": {
+    "angular": "~1.5.1",
+    "angular-route": "~1.5.1",
+    "angular-bootstrap": "~1.2.4",
+    "bootstrap": "~3.3.6",
+    "requirejs": "~2.1.22",
+    "angular-animate": "~1.5.1"
+  }
+}

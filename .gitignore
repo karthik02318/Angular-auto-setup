@@ -1,0 +1,13 @@
+.DS_Store
+# Folder config file
+Desktop.ini
+built/**
+node_modules/**
+.idea/**
+development/common/lib
+obj/**
+/target/
+/.project
+/target-grunt/
+docs
+.idea

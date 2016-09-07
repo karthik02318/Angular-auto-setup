@@ -1,0 +1,27 @@
+/**
+* Provides the base Widget {{capitalize}}
+*
+* @module {{name}}
+* @submodule posApp
+*/
+define([],function () {
+    'use strict';
+    /**
+    * Provides Listener to {{capitalize}}
+    *
+    * @class {{capitalize}}Listener
+    * @constructor
+    * @module {{name}}
+    */
+    var {{capitalize}}Listener = {
+        $myscope:null,
+        initialize: function($scope,MY_EVENTS){
+            this.listen($scope,MY_EVENTS);
+        },
+
+        listen: function($scope,MY_EVENTS){
+
+        }
+    }
+    return {{capitalize}}Listener;
+});

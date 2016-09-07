@@ -1,0 +1,78 @@
+/**
+* Provides the base Widget {{capitalize}}
+*
+* @module {{name}}
+* @submodule posApp
+*/
+define(['Widget','{{name}}Controllers','{{name}}Directives','{{name}}Factories','{{name}}Services','{{name}}Filters','{{name}}Constants'], function (Widget,Controllers,Directives,Factories,Services,Filters,Constants) {
+	'use strict';
+    /**
+    * Class to {{name}} module use to initialize all objects
+    *
+    * @class {{capitalize}}
+    * @constructor initialize
+    * @extends Clazz.Widget
+    * @module {{name}}
+    */
+	var {{capitalize}}=Clazz.extend(
+		Clazz.Widget,{
+        /**
+        * Initialize all objects
+        * @method initialize
+        * @private
+        */
+		initialize:function(){
+			this.templateUrl= Clazz.config.assets.{{name}}.templateUrl;
+            /**
+            * @restrict E
+            *
+            * @description
+            * Using {{name}} module you can create the angular html template from template folder
+            * widget is the attribute is mandatory.
+            * element helps to find the module and widget attribute finds the module component path
+            * option attribute to pass data via element and can get in controller scope
+            * ref check config.json
+            *
+            * The buggy way to write it:
+            * ```html
+            * <pos:{{name}} ></pos:{{name}}>
+            * ```
+            *
+            * The correct way to write it:
+            *
+            * ```html
+            * <pos:{{name}} option='{"popup":false}' widget="{{name}}"></pos:{{name}}>
+            * ```
+            *
+            * or
+            *
+            * ```html
+            * <pos:{{name}} option='{"popup":false}' widget="{{name}}"></pos:{{name}}>
+            * ```
+            *
+            * @element pos{{capitalize}}
+            * @attribute widget Pass module name
+            * @attribute option Pass stringify json
+            * @required
+            */
+			this.myContainer="pos{{capitalize}}";
+			this.moduleName = Clazz.config.assets.{{name}}.moduleName; //'nav';
+			this.mymodule = angular.module(this.moduleName);
+			this.controllers = Controllers;
+            this.directives = Directives;
+            this.factories = Factories;
+            this.services = Services;
+            this.filters = Filters;
+            this.constants = Constants;
+		},
+        /**
+        * To inject all angular dependencies to this module
+        * @method injectDependencies
+        * @private
+        */
+		injectDependencies: function(){
+
+		}
+	});
+	return new {{capitalize}}();
+});

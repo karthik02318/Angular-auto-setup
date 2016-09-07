@@ -1,0 +1,38 @@
+{
+  "name": "AFW",
+  "description": "Angular frame work",
+  "version":"0.1",
+  "homepage":"",
+  "bugs":{
+    "url" : "",
+   "email" : ""
+  },
+  "bin": "built",
+  "repository":{
+    "type" : "git",
+    "url" : ""
+  },
+  "dependencies": {
+    "grunt-contrib-clean": "~0.4.0",
+    "grunt": "~0.4.2",
+    "grunt-cli": "^0.1.13",
+    "grunt-writefile": "~0.1.1",
+    "grunt-contrib-requirejs": "~0.4.0",
+    "grunt-contrib-concat": "~0.5.0",
+    "grunt-string-replace": "~0.2.7",
+    "grunt-contrib-watch":"~0.4.0",
+    "grunt-contrib-yuidoc": "0.10.0"
+  },
+  "devDependencies": {
+    "karma-chrome-launcher": "^0.2.0",
+    "karma-jasmine": "~0.3.5",
+    "jasmine-core": "~2.2.0",
+    "karma-phantomjs-launcher": "~0.1.4",
+    "requirejs": "~2.1.14",
+    "karma": "~0.12.21",
+    "karma-requirejs": "~0.2.2",
+    "grunt-karma": "~0.8.3",
+    "karma-firefox-launcher": "~0.1",
+    "karma-junit-reporter": "~0.3"
+  }
+}

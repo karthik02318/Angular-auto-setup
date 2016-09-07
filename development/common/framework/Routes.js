@@ -1,0 +1,82 @@
+define(['angularRoute','framework/App'], function (route,App) {
+	'use strict';
+	Clazz.createPackage('com.base');
+	/**
+	 *
+	 *
+	 * @class Clazz.com.base.Routes
+	 * @constructor
+	 * @extends Clazz.Base
+	 * @module posApp
+	 */
+	Clazz.com.base.Routes = Clazz.extend(
+		Clazz.Base,{
+		app:null,
+		mainModule: null,
+		setup: function () {
+			var self = this;
+						self.app=App;
+						self.mainModule = self.app.mainModule;
+						self.mainModule.config(['$locationProvider', '$routeProvider', '$controllerProvider', '$compileProvider', '$filterProvider', '$provide', '$logProvider','$httpProvider',
+								function ($locationProvider, $routeProvider, $controllerProvider, $compileProvider, $filterProvider, $provide,$logProvider,$httpProvider) {
+									//$httpProvider.defaults.headers.post["Content-Type"] = "text/xml; charset=utf-8";
+									self.registerProviders($controllerProvider, $compileProvider, $filterProvider, $provide);
+										angular.forEach(Clazz.config.routeAppMapping, function (value, key) {
+											$routeProvider.when(value, this.resolve({
+												depName: key,
+												template: '<'+ Clazz.config.tagname +':' + key + '></'+ Clazz.config.tagname +':' + key +'>'
+											}));
+										}, self);
+										$routeProvider.otherwise({
+											redirectTo: Clazz.config.defaultRouting
+										});
+									$locationProvider.html5Mode(false);
+							}]);
+
+		},
+		resolve: function (obj) {
+			var self = this;
+			var routeDef = {};
+			routeDef.template = obj.template;
+			routeDef.resolve = {
+				load: ['$q', '$rootScope', function ($q, $rootScope) {
+						var dependencies = [obj.depName];
+						return self.resolveDependencies($q, $rootScope, dependencies);
+					}]
+			};
+			return routeDef;
+		},
+		resolveDependencies: function ($q, $rootScope, dependencies) {
+			var defer = $q.defer();
+			require(dependencies, function (component) {
+				component.load();
+				/*To make it empty $rootScope.$$phase if it is digest*/
+				if($rootScope.$$phase){
+					$rootScope.$$phase=null;
+				}
+				$rootScope.$apply(function () {
+					defer.resolve();
+				});
+			});
+			return defer.promise;
+		},
+		/*Willbe called when Lazy loading*/
+		registerProviders: function($controllerProvider, $compileProvider, $filterProvider, $provide){
+			//var moduleList=this.app.appModules;
+            var self= this;
+            var moduleList=self.app.appModules;//Clazz.config.apps;
+			angular.forEach(moduleList, function (module, key) {
+                //self.app.appModules[module.moduleName].lazy={
+                module.lazy={
+							controller: $controllerProvider.register,
+							directive: $compileProvider.directive,
+							filter: $filterProvider.register,
+							factory: $provide.factory,
+							service: $provide.service,
+                            constant:$provide.constant
+						};
+			});
+		}
+	});
+	return new Clazz.com.base.Routes().setup();
+});

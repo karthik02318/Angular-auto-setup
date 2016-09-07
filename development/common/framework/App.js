@@ -1,0 +1,43 @@
+define(['util/Util'], function (util) {
+'use strict';
+Clazz.createPackage('com.base');
+	/**
+	 * App class to register utility module and external module to the main module
+	 *
+	 * @class Clazz.com.base.App
+	 * @constructor
+	 * @extends Clazz.Base
+	 * @module posApp
+	 */
+	Clazz.com.base.App = Clazz.extend(
+		Clazz.Base,{
+			mainModule:null,
+			appModules:{},
+			/**
+			 * All external module from Clazz.config.externanalAngularModule, 'ngRoute' and utility module is added to the main module
+			 *
+			 * @method initialize
+			 */
+			initialize:function(){
+				/*Create and load Util Module first*/
+				util.load();
+				/*Create App Modules */
+				for(var index=0;index<Clazz.modules.length;index++){
+					var moduleName = Clazz.modules[index];
+					var module = null;
+					/* Inject Util Module as Dependency modules for all other modules */
+					var utilModule =[];
+					utilModule.push(Clazz.config.utilModule);
+					//combine external module with util module
+					utilModule = utilModule.concat(Clazz.config.externanalAngularModule);
+					module = angular.module(moduleName,utilModule);
+					this.appModules[moduleName]=module;
+				};
+				/* Add 'ngRoute' as another Dependency Module to main Module*/
+				Clazz.modules.push('ngRoute');
+				/* Create Main Module with Name <Clazz.config.mainModule> and dependency Modules*/
+				this.mainModule=angular.module(Clazz.config.mainModule, Clazz.modules);
+			}
+	});
+	return new Clazz.com.base.App();
+});

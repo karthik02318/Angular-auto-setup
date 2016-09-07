@@ -1,0 +1,15 @@
+define(['LoadComponent'], function (LoadComponent) {
+'use strict';
+Clazz.createPackage('com.pos.{{capitalize}}.js');
+Clazz.com.pos.{{name}}.js.{{capitalize}}=Clazz.extend(
+    LoadComponent,{
+            initialize:function(){
+                this.templateUrl= Clazz.config.apps.{{name}}.templateUrl;
+                this.myContainer="pos{{capitalize}}";
+                this.moduleName = Clazz.config.apps.{{name}}.moduleName;
+                this.mymodule = angular.module(this.moduleName);
+            }
+        });
+
+    return new Clazz.com.pos.{{name}}.js.{{capitalize}}();
+});
