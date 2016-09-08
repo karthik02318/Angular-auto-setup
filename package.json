@@ -1,7 +1,7 @@
 {
-  "name": "AFW",
-  "description": "Angular frame work",
-  "version":"0.1",
+  "name": "AAS",
+  "description": "Angular-auto-setup",
+  "version":"0.1.0",
   "homepage":"",
   "bugs":{
     "url" : "",
@@ -12,6 +12,7 @@
     "type" : "git",
     "url" : ""
   },
+  "license": "MIT",
   "dependencies": {
     "grunt-contrib-clean": "~0.4.0",
     "grunt": "~0.4.2",
@@ -21,7 +22,8 @@
     "grunt-contrib-concat": "~0.5.0",
     "grunt-string-replace": "~0.2.7",
     "grunt-contrib-watch":"~0.4.0",
-    "grunt-contrib-yuidoc": "0.10.0"
+    "grunt-contrib-yuidoc": "0.10.0",
+    "grunt-mkdir":"~1.0.0"
   },
   "devDependencies": {
     "karma-chrome-launcher": "^0.2.0",
