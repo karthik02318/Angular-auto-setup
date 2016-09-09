@@ -11,3 +11,4 @@ obj/**
 /target-grunt/
 docs
 .idea
+template/json

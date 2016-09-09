@@ -4,19 +4,9 @@
  */
 'use strict';
 var packagejson = require('./package.json');
+var chalk = require('chalk');
+var _ = require('lodash');
 module.exports = function (grunt) {
-    var componentName = "",version_num=undefined;
-    if(grunt.option('componentName') == undefined){
-        componentName = "t";
-    }else{
-        componentName = grunt.option('componentName').toLowerCase();
-    }
-
-    if(grunt.option('versionnum') == undefined){
-        version_num = undefined;
-    }else{
-        version_num = grunt.option('versionnum');
-    }
     var capitalize=function(s)
     {
         if(s!==undefined){
@@ -31,6 +21,7 @@ module.exports = function (grunt) {
     var finalJson = {};
 
     grunt.initConfig({
+
         // Before generating any new files, remove any previously-created files.
         pkg: grunt.file.readJSON('package.json'),
         dir : {
@@ -89,7 +80,7 @@ module.exports = function (grunt) {
                 dest: 'test-main.js'
             },
             /*
-             * Create components with the help of create command  $ grunt create --componentName=<module name>
+             * Create components with the help of create command  $ grunt create
              */
             insertjson:{
                 options: {
@@ -100,122 +91,122 @@ module.exports = function (grunt) {
             },
             compjson:{
                 options: {
-                    data: {name:componentName,capitalize:capitalize(componentName),pref:packagejson.name.toLowerCase(),pref_c:capitalize(packagejson.name)}
+                    data: {name:'<%= echo.input %>',capitalize:capitalize('<%= echo.input %>'),pref:packagejson.name.toLowerCase(),pref_c:capitalize(packagejson.name)}
                 },
                 src: 'template/json/config.hbs',
                 dest: 'development/config.json'
             },
             create_comp:{
                 options: {
-                    data: {name:componentName,capitalize:capitalize(componentName),pref:packagejson.name.toLowerCase(),pref_c:capitalize(packagejson.name)}
+                    data: {name:'<%= echo.input %>',capitalize:capitalize('<%= echo.input %>'),pref:packagejson.name.toLowerCase(),pref_c:capitalize(packagejson.name)}
                 },
                 src: 'template/component/js/Component.hbs',
-                dest: 'development/assets/'+componentName+'/js/'+capitalize(componentName)+'.js'
+                dest: 'development/assets/'+ '<%= echo.input %>'+'/js/'+capitalize('<%= echo.input %>')+'.js'
             },
             crate_template:{
                 options: {
-                    data: {name:componentName,capitalize:capitalize(componentName),pref:packagejson.name.toLowerCase(),pref_c:capitalize(packagejson.name)}
+                    data: {name:'<%= echo.input %>',capitalize:capitalize('<%= echo.input %>'),pref:packagejson.name.toLowerCase(),pref_c:capitalize(packagejson.name)}
                 },
                 src: 'template/component/template/Component.hbs',
-                dest: 'development/assets/'+componentName+'/template/'+capitalize(componentName)+'.html'
+                dest: 'development/assets/'+'<%= echo.input %>'+'/template/'+capitalize('<%= echo.input %>')+'.html'
             },
             crate_test:{
                 options: {
-                    data: {name:componentName,capitalize:capitalize(componentName),pref:packagejson.name.toLowerCase(),pref_c:capitalize(packagejson.name)}
+                    data: {name:'<%= echo.input %>',capitalize:capitalize('<%= echo.input %>'),pref:packagejson.name.toLowerCase(),pref_c:capitalize(packagejson.name)}
                 },
                 src: 'template/component/test/Component.Test.hbs',
-                dest: 'development/assets/'+componentName+'/test/'+capitalize(componentName)+'.Test.js'
+                dest: 'development/assets/'+'<%= echo.input %>'+'/test/'+capitalize('<%= echo.input %>')+'.Test.js'
             },
             crate_css:{
                 options: {
-                    data: {name:componentName,capitalize:capitalize(componentName),pref:packagejson.name.toLowerCase(),pref_c:capitalize(packagejson.name)}
+                    data: {name:'<%= echo.input %>',capitalize:capitalize('<%= echo.input %>'),pref:packagejson.name.toLowerCase(),pref_c:capitalize(packagejson.name)}
                 },
                 src: 'template/component/css/Component.hbs',
-                dest: 'development/assets/'+componentName+'/css/'+capitalize(componentName)+'.css'
+                dest: 'development/assets/'+'<%= echo.input %>'+'/css/'+capitalize('<%= echo.input %>')+'.css'
             },
             create_controllers:{
                 options: {
-                    data: {name:componentName,capitalize:capitalize(componentName),pref:packagejson.name.toLowerCase(),pref_c:capitalize(packagejson.name)}
+                    data: {name:'<%= echo.input %>',capitalize:capitalize('<%= echo.input %>'),pref:packagejson.name.toLowerCase(),pref_c:capitalize(packagejson.name)}
                 },
                 src: 'template/component/js/Controllers.hbs',
-                dest: 'development/assets/'+componentName+'/js/'+capitalize(componentName)+'Controllers.js'
+                dest: 'development/assets/'+'<%= echo.input %>'+'/js/'+capitalize('<%= echo.input %>')+'Controllers.js'
             },
             create_directives:{
                 options: {
-                    data: {name:componentName,capitalize:capitalize(componentName),pref:packagejson.name.toLowerCase(),pref_c:capitalize(packagejson.name)}
+                    data: {name:'<%= echo.input %>',capitalize:capitalize('<%= echo.input %>'),pref:packagejson.name.toLowerCase(),pref_c:capitalize(packagejson.name)}
                 },
                 src: 'template/component/js/Directives.hbs',
-                dest: 'development/assets/'+componentName+'/js/'+capitalize(componentName)+'Directives.js'
+                dest: 'development/assets/'+'<%= echo.input %>'+'/js/'+capitalize('<%= echo.input %>')+'Directives.js'
             },
             create_factories:{
                 options: {
-                    data: {name:componentName,capitalize:capitalize(componentName),pref:packagejson.name.toLowerCase(),pref_c:capitalize(packagejson.name)}
+                    data: {name:'<%= echo.input %>',capitalize:capitalize('<%= echo.input %>'),pref:packagejson.name.toLowerCase(),pref_c:capitalize(packagejson.name)}
                 },
                 src: 'template/component/js/Factories.hbs',
-                dest: 'development/assets/'+componentName+'/js/'+capitalize(componentName)+'Factories.js'
+                dest: 'development/assets/'+'<%= echo.input %>'+'/js/'+capitalize('<%= echo.input %>')+'Factories.js'
             },
             create_services:{
                 options: {
-                    data: {name:componentName,capitalize:capitalize(componentName),pref:packagejson.name.toLowerCase(),pref_c:capitalize(packagejson.name)}
+                    data: {name:'<%= echo.input %>',capitalize:capitalize('<%= echo.input %>'),pref:packagejson.name.toLowerCase(),pref_c:capitalize(packagejson.name)}
                 },
                 src: 'template/component/js/Services.hbs',
-                dest: 'development/assets/'+componentName+'/js/'+capitalize(componentName)+'Services.js'
+                dest: 'development/assets/'+'<%= echo.input %>'+'/js/'+capitalize('<%= echo.input %>')+'Services.js'
             },
             create_filters:{
                 options: {
-                    data: {name:componentName,capitalize:capitalize(componentName),pref:packagejson.name.toLowerCase(),pref_c:capitalize(packagejson.name)}
+                    data: {name:'<%= echo.input %>',capitalize:capitalize('<%= echo.input %>'),pref:packagejson.name.toLowerCase(),pref_c:capitalize(packagejson.name)}
                 },
                 src: 'template/component/js/Filters.hbs',
-                dest: 'development/assets/'+componentName+'/js/'+capitalize(componentName)+'Filters.js'
+                dest: 'development/assets/'+'<%= echo.input %>'+'/js/'+capitalize('<%= echo.input %>')+'Filters.js'
             },
             create_constants:{
                 options: {
-                    data: {name:componentName,capitalize:capitalize(componentName),pref:packagejson.name.toLowerCase(),pref_c:capitalize(packagejson.name)}
+                    data: {name:'<%= echo.input %>',capitalize:capitalize('<%= echo.input %>'),pref:packagejson.name.toLowerCase(),pref_c:capitalize(packagejson.name)}
                 },
                 src: 'template/component/js/Constants.hbs',
-                dest: 'development/assets/'+componentName+'/js/'+capitalize(componentName)+'Constants.js'
+                dest: 'development/assets/'+'<%= echo.input %>'+'/js/'+capitalize('<%= echo.input %>')+'Constants.js'
             },
             create_events:{
                 options: {
-                    data: {name:componentName,capitalize:capitalize(componentName),pref:packagejson.name.toLowerCase(),pref_c:capitalize(packagejson.name)}
+                    data: {name:'<%= echo.input %>',capitalize:capitalize('<%= echo.input %>'),pref:packagejson.name.toLowerCase(),pref_c:capitalize(packagejson.name)}
                 },
                 src: 'template/component/js/Events.hbs',
-                dest: 'development/assets/'+componentName+'/js/'+capitalize(componentName)+'Events.js'
+                dest: 'development/assets/'+'<%= echo.input %>'+'/js/'+capitalize('<%= echo.input %>')+'Events.js'
             },
             create_listeners:{
                 options: {
-                    data: {name:componentName,capitalize:capitalize(componentName),pref:packagejson.name.toLowerCase(),pref_c:capitalize(packagejson.name)}
+                    data: {name:'<%= echo.input %>',capitalize:capitalize('<%= echo.input %>'),pref:packagejson.name.toLowerCase(),pref_c:capitalize(packagejson.name)}
                 },
                 src: 'template/component/js/Listeners.hbs',
-                dest: 'development/assets/'+componentName+'/js/'+capitalize(componentName)+'Listeners.js'
+                dest: 'development/assets/'+'<%= echo.input %>'+'/js/'+capitalize('<%= echo.input %>')+'Listeners.js'
             },
             cratemod_js:{
                 options: {
-                    data: {name:componentName,capitalize:capitalize(componentName),pref:packagejson.name.toLowerCase(),pref_c:capitalize(packagejson.name)}
+                    data: {name:'<%= echo.input %>',capitalize:capitalize('<%= echo.input %>'),pref:packagejson.name.toLowerCase(),pref_c:capitalize(packagejson.name)}
                 },
                 src: 'template/component/modjs/Component.hbs',
-                dest: 'development/module/'+componentName+'/js/'+capitalize(componentName)+'.js'
+                dest: 'development/module/'+'<%= echo.input %>'+'/js/'+capitalize('<%= echo.input %>')+'.js'
             },
             cratemod_template:{
                 options: {
-                    data: {name:componentName,capitalize:capitalize(componentName),pref:packagejson.name.toLowerCase(),pref_c:capitalize(packagejson.name)}
+                    data: {name:'<%= echo.input %>',capitalize:capitalize('<%= echo.input %>'),pref:packagejson.name.toLowerCase(),pref_c:capitalize(packagejson.name)}
                 },
                 src: 'template/component/modtemplate/Component.hbs',
-                dest: 'development/module/'+componentName+'/template/'+capitalize(componentName)+'.html'
+                dest: 'development/module/'+'<%= echo.input %>'+'/template/'+capitalize('<%= echo.input %>')+'.html'
             },
             create_routeJS:{
                 options: {
-                    data: {name:componentName,capitalize:capitalize(componentName),pref:packagejson.name.toLowerCase(),pref_c:capitalize(packagejson.name)}
+                    data: {name:'<%= echo.input %>',capitalize:capitalize('<%= echo.input %>'),pref:packagejson.name.toLowerCase(),pref_c:capitalize(packagejson.name)}
                 },
                 src: 'template/route/js/Route.hbs',
-                dest: 'development/module/'+componentName+'/js/'+capitalize(componentName)+'.js'
+                dest: 'development/module/'+'<%= echo.input %>'+'/js/'+capitalize('<%= echo.input %>')+'.js'
             },
             create_routeTmpl:{
                 options: {
-                    data: {name:componentName,capitalize:capitalize(componentName),pref:packagejson.name.toLowerCase(),pref_c:capitalize(packagejson.name)}
+                    data: {name:'<%= echo.input %>',capitalize:capitalize('<%= echo.input %>'),pref:packagejson.name.toLowerCase(),pref_c:capitalize(packagejson.name)}
                 },
                 src: 'template/route/template/Route.hbs',
-                dest: 'development/module/'+componentName+'/template/'+capitalize(componentName)+'.html'
+                dest: 'development/module/'+'<%= echo.input %>'+'/template/'+capitalize('<%= echo.input %>')+'.html'
             },
             initass:{
                 options: {
@@ -244,11 +235,13 @@ module.exports = function (grunt) {
                     src: ['development/theme/css/common/style.css','development/**/*.css','!development/theme/css/common/concat.css','!development/common/lib/**/*.css'],
                     dest: 'development/theme/css/common/concat.css'
                 }
-        },karma: {
+        },
+        karma: {
             unit: {
                 configFile: 'karma.conf.js'
             }
-        },watch: {
+        },
+        watch: {
             scripts: {
                 files: ['development/**/*.css','!development/theme/css/common/concat.css'],
                 tasks: ['concatcss'],
@@ -257,7 +250,8 @@ module.exports = function (grunt) {
                 },
 
             },
-        },yuidoc: {
+        },
+        yuidoc: {
             compile: {
                 name: '<%= pkg.name %>',
                 description: '<%= pkg.description %>',
@@ -279,6 +273,28 @@ module.exports = function (grunt) {
                     create: ['development/theme/images']
                 }
             }
+        },
+        prompt: {
+            getcompname: {
+                options: {
+                    questions: [
+                        {
+                            config: 'echo.input',
+                            type: 'input',
+                            message: 'Please enter assert name',
+                            validate: function (value) {
+                                if (value === '') {
+                                    return chalk.red.bold('A value is required.');
+                                }
+                                return true;
+                            }
+                        }
+                    ],
+                    then: function () {
+                        console.log(chalk.green.bold.underline('Pleas be patient we are creating assets for you in the name of ')+'\"'+ chalk.yellow.bold('<%= echo.input %>')+'\"');
+                    }
+                }
+            }
         }
     });
 
@@ -293,7 +309,8 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-karma');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-mkdir');
-
+    grunt.loadNpmTasks('grunt-mkdir');
+    grunt.loadNpmTasks('grunt-prompt');
 
 
 
@@ -307,10 +324,13 @@ module.exports = function (grunt) {
    grunt.registerTask('concatcss', ['clean:css','concat:css']);
    grunt.registerTask('test', ['karma']);
    //Create task
-   grunt.registerTask('create', ['writefile:insertjson','string-replace:build','writefile:compjson:create_comp','writefile:create_comp','writefile:create_controllers','writefile:create_directives','writefile:create_factories','writefile:create_services','writefile:create_filters','writefile:create_constants','writefile:create_events','writefile:create_listeners','writefile:crate_template','writefile:crate_test','writefile:crate_css']);
+   //grunt.registerTask('create', ['writefile:insertjson','string-replace:build','writefile:compjson:create_comp','writefile:create_comp','writefile:create_controllers','writefile:create_directives','writefile:create_factories','writefile:create_services','writefile:create_filters','writefile:create_constants','writefile:create_events','writefile:create_listeners','writefile:crate_template','writefile:crate_test','writefile:crate_css']);
+   //grunt.registerTask('route', ['writefile:create_routeJS','writefile:create_routeTmpl']);
+   grunt.registerTask('create', ['prompt:getcompname','writefile:insertjson','string-replace:build','writefile:compjson:create_comp','writefile:create_comp','writefile:create_controllers','writefile:create_directives','writefile:create_factories','writefile:create_services','writefile:create_filters','writefile:create_constants','writefile:create_events','writefile:create_listeners','writefile:crate_template','writefile:crate_test','writefile:crate_css']);
+   grunt.registerTask('route', ['prompt:getcompname','writefile:create_routeJS','writefile:create_routeTmpl']);
    //not working
    grunt.registerTask('createmod', ['writefile:compjson:cratemod_js','writefile:cratemod_template']);
    grunt.registerTask('updateversion', ['string-replace:version']);
    grunt.registerTask('docs', ['yuidoc']);
-   grunt.registerTask('start', ['writefile:initass','mkdir:createimgdir']);
+   grunt.registerTask('init', ['writefile:initass','mkdir:createimgdir']);
 };

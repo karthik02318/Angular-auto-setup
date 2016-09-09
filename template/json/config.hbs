@@ -1,10 +1,10 @@
 {
-    "name": "POS",
-    "description": "Point Of Sale",
-    "version":"1.0.0",
-    "mainModule": "posApp",
+    "name": "AAS",
+    "description": "Angular-auto-setup",
+    "version":"0.1.0",
+    "mainModule": "aasApp",
     "utilModule": "util",
-    "tagname":"pos",
+    "tagname":"aas",
     "settings":{},
     "externanalAngularModule": [
         "ui.bootstrap","ngAnimate"
@@ -41,77 +41,15 @@
              },
             "templateUrl": "assets/{{name}}/template/{{capitalize}}.html"
         },
-        "samplelist": {
-            "moduleName": "samplelist",
-            "paths": {
-                "samplelist": "assets/samplelist/js/Samplelist",
-                "samplelistControllers": "assets/samplelist/js/SamplelistControllers",
-                "samplelistDirectives":"assets/samplelist/js/SamplelistDirectives",
-                "samplelistFactories":"assets/samplelist/js/SamplelistFactories",
-                "samplelistServices":"assets/samplelist/js/SamplelistServices",
-             "samplelistFilters":"assets/samplelist/js/SamplelistFilters",
-             "samplelistConstants":"assets/samplelist/js/SamplelistConstants",
-             "samplelistListeners":"assets/samplelist/js/SamplelistListeners",
-             "samplelistEvents":"assets/samplelist/js/SamplelistEvents"
-             },
-            "templateUrl": "assets/samplelist/template/Samplelist.html"
-        },
-        "publish": {
-            "moduleName": "publish",
-            "paths": {
-                "publish": "assets/publish/js/Publish",
-                "publishControllers": "assets/publish/js/PublishControllers",
-                "publishDirectives":"assets/publish/js/PublishDirectives",
-                "publishFactories":"assets/publish/js/PublishFactories",
-                "publishServices":"assets/publish/js/PublishServices",
-             "publishFilters":"assets/publish/js/PublishFilters",
-             "publishConstants":"assets/publish/js/PublishConstants",
-             "publishListeners":"assets/publish/js/PublishListeners",
-             "publishEvents":"assets/publish/js/PublishEvents"
-             },
-            "templateUrl": "assets/publish/template/Publish.html"
-        },
-        "subscribe": {
-            "moduleName": "subscribe",
-            "paths": {
-                "subscribe": "assets/subscribe/js/Subscribe",
-                "subscribeControllers": "assets/subscribe/js/SubscribeControllers",
-                "subscribeDirectives":"assets/subscribe/js/SubscribeDirectives",
-                "subscribeFactories":"assets/subscribe/js/SubscribeFactories",
-                "subscribeServices":"assets/subscribe/js/SubscribeServices",
-             "subscribeFilters":"assets/subscribe/js/SubscribeFilters",
-             "subscribeConstants":"assets/subscribe/js/SubscribeConstants",
-             "subscribeListeners":"assets/subscribe/js/SubscribeListeners",
-             "subscribeEvents":"assets/subscribe/js/SubscribeEvents"
-             },
-            "templateUrl": "assets/subscribe/template/Subscribe.html"
-        },
-        "login": {
-            "moduleName": "login",
-            "paths": {
-                "login": "assets/login/js/Login",
-                "loginControllers": "assets/login/js/LoginControllers",
-                "loginDirectives":"assets/login/js/LoginDirectives",
-                "loginFactories":"assets/login/js/LoginFactories",
-                "loginServices":"assets/login/js/LoginServices",
-             "loginFilters":"assets/login/js/LoginFilters",
-             "loginConstants":"assets/login/js/LoginConstants",
-             "loginListeners":"assets/login/js/LoginListeners",
-             "loginEvents":"assets/login/js/LoginEvents"
-             },
-            "templateUrl": "assets/login/template/Login.html"
-        }
+
 
     },
     "routeAppMapping": {
-        "home": "/home"
+
     },
-    "defaultRouting": "/home",
+    "defaultRouting": "/",
     "routeAssetMapping": {
-        "home": {
-            "componentPath": "home",
-            "module": "home"
-        }
+
     },
     "unittest": {
 

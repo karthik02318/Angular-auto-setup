@@ -2,7 +2,7 @@
 * Provides the base Widget {{capitalize}}
 *
 * @module {{name}}
-* @submodule posApp
+* @submodule {{pref}}App
 */
 define(['Widget','{{name}}Controllers','{{name}}Directives','{{name}}Factories','{{name}}Services','{{name}}Filters','{{name}}Constants'], function (Widget,Controllers,Directives,Factories,Services,Filters,Constants) {
 	'use strict';
@@ -35,27 +35,27 @@ define(['Widget','{{name}}Controllers','{{name}}Directives','{{name}}Factories',
             *
             * The buggy way to write it:
             * ```html
-            * <pos:{{name}} ></pos:{{name}}>
+            * <{{pref}}:{{name}} ></{{pref}}:{{name}}>
             * ```
             *
             * The correct way to write it:
             *
             * ```html
-            * <pos:{{name}} option='{"popup":false}' widget="{{name}}"></pos:{{name}}>
+            * <{{pref}}:{{name}} option='{"popup":false}' widget="{{name}}"></{{pref}}:{{name}}>
             * ```
             *
             * or
             *
             * ```html
-            * <pos:{{name}} option='{"popup":false}' widget="{{name}}"></pos:{{name}}>
+            * <{{pref}}:{{name}} option='{"popup":false}' widget="{{name}}"></{{pref}}:{{name}}>
             * ```
             *
-            * @element pos{{capitalize}}
+            * @element {{pref}}{{capitalize}}
             * @attribute widget Pass module name
             * @attribute option Pass stringify json
             * @required
             */
-			this.myContainer="pos{{capitalize}}";
+			this.myContainer="{{pref}}{{capitalize}}";
 			this.moduleName = Clazz.config.assets.{{name}}.moduleName; //'nav';
 			this.mymodule = angular.module(this.moduleName);
 			this.controllers = Controllers;

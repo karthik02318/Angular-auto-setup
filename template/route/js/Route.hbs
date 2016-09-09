@@ -1,42 +1,42 @@
 /**
- * Provides the base Widget Login
+ * Provides the base Widget {{capitalize}}
  *
- * @module home
- * @submodule posApp
+ * @module {{name}}
+ * @submodule {{pref}}App
  */
 define(['LoadComponent'], function (LoadComponent) {
     'use strict';
     /**
      * Class to hmome module use define the collection of compononts in side the template
      *
-     * @class Home
+     * @class {{capitalize}}
      * @constructor
      * @extends Clazz.LoadComponent
-     * @module home
+     * @module {{name}}
      */
-    var Home=Clazz.extend(
+    var {{capitalize}}=Clazz.extend(
     LoadComponent,{
         initialize:function(){
-            this.templateUrl= Clazz.config.apps.home.templateUrl;
+            this.templateUrl= Clazz.config.apps.{{name}}.templateUrl;
             /**
              * @restrict A
              *
              * @description
-             * Using home module gets the collection of elements from template and loads the appropriate
+             * Using {{name}} module gets the collection of elements from template and loads the appropriate
              * components with the help of angular directives. This element is automatically loaded from
              * angular route.
              *
              *
              * ```html
-             * <pos:home></pos:home>
+             * <{{pref}}:{{name}}></{{pref}}:{{name}}>
              * ```
              *
-             * @element posHome
+             * @element {{pref}}{{capitalize}}
              */
-            this.myContainer="posHome";
-            this.moduleName = Clazz.config.apps.home.moduleName;
+            this.myContainer="{{pref}}{{capitalize}}";
+            this.moduleName = Clazz.config.apps.{{name}}.moduleName;
             this.mymodule = angular.module(this.moduleName);
         }
     });
-    return new Home();
+    return new {{capitalize}}();
 });
